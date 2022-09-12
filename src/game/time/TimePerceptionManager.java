@@ -1,5 +1,7 @@
 package game.time;
 
+import game.pokemons.AffectionManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class TimePerceptionManager {
 
     private int turn;
 
+    private int periodCounter;
+
     private TimePeriod shift; // DAY or NIGHT
 
     /**
@@ -37,7 +41,10 @@ public class TimePerceptionManager {
      * FIXME: create a singleton instance.
      */
     public static TimePerceptionManager getInstance() {
-        return null;
+        if (instance == null) {
+            instance = new TimePerceptionManager();
+        }
+        return instance;
     }
 
     /**
@@ -46,6 +53,8 @@ public class TimePerceptionManager {
     private TimePerceptionManager() {
         timePerceptionList = new ArrayList<>();
         turn = 0;
+        shift = TimePeriod.DAY;
+        periodCounter = 0;
     }
 
     /**
@@ -55,6 +64,34 @@ public class TimePerceptionManager {
      * FIXME: write a relevant logic (i.e., increment turns choose day or night) and call this method once at every turn.
      */
     public void run() {
+
+        if (shift == TimePeriod.DAY) {
+            System.out.println("It is a Day-time (turn " + turn + ")");
+        }
+        else if (shift == TimePeriod.NIGHT) {
+            System.out.println("It is a Night-time (turn " + turn + ")");
+        }
+
+        if ((periodCounter + 1) % 5 == 0) {
+            periodCounter = -1;
+            if (shift == TimePeriod.DAY) {
+                shift = TimePeriod.NIGHT;
+            }
+            else if (shift == TimePeriod.NIGHT) {
+                shift = TimePeriod.DAY;
+            }
+        }
+
+        for (TimePerception timeObjects : timePerceptionList) {
+            if (shift == TimePeriod.DAY) {
+                timeObjects.dayEffect();
+            }
+            else if (shift == TimePeriod.NIGHT) {
+                timeObjects.nightEffect();
+            }
+        }
+        periodCounter += 1;
+        turn += 1;
     }
 
 
@@ -64,6 +101,7 @@ public class TimePerceptionManager {
      * @param objInstance any instance that implements TimePerception
      */
     public void append(TimePerception objInstance) {
+        this.timePerceptionList.add(objInstance);
     }
 
 
