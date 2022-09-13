@@ -1,6 +1,7 @@
-package game;
+package game.pokemons;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.actions.AttackAction;
 
 /**
  * Created by:

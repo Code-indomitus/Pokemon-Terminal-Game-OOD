@@ -1,4 +1,4 @@
-package game;
+package game.pokemons;
 
 
 import edu.monash.fit2099.engine.actions.Action;
@@ -7,6 +7,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.positions.GameMap;
+import game.actions.AttackAction;
+import game.elements.Element;
 import game.behaviours.Behaviour;
 import game.behaviours.WanderBehaviour;
 
@@ -19,7 +21,7 @@ import java.util.Map;
  * @author Riordan D. Alfredo
  * Modified by:
  */
-public class Charmander extends Actor {
+public class Charmander extends Pokemon {
     //FIXME: Change it to a sorted map (is it TreeMap? HashMap? LinkedHashMap?)
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
@@ -27,7 +29,7 @@ public class Charmander extends Actor {
      * Constructor.
      */
     public Charmander() {
-        super("Charmander", 'c', 100);
+        super("Charmander", 'c');
         // HINT: add more relevant behaviours here
         this.addCapability(Element.FIRE);
         this.behaviours.put(10, new WanderBehaviour());
