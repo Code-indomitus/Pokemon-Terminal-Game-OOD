@@ -11,6 +11,7 @@ import game.actions.AttackAction;
 import game.elements.Element;
 import game.behaviours.Behaviour;
 import game.behaviours.WanderBehaviour;
+import game.nusre.Tradeable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,7 @@ import java.util.Map;
  * @author Riordan D. Alfredo
  * Modified by:
  */
-public class Charmander extends Pokemon {
+public class Charmander extends Pokemon implements Tradeable {
     //FIXME: Change it to a sorted map (is it TreeMap? HashMap? LinkedHashMap?)
     private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
 
