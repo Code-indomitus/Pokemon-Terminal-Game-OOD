@@ -13,4 +13,9 @@ public class Pokefruit extends Item implements Tradeable {
         this.addCapability(pokefruitElement);
 
     }
+
+    @Override
+    public boolean isPokemon() {
+        return false;
+    }
 }

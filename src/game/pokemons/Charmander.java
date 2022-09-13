@@ -71,4 +71,8 @@ public class Charmander extends Pokemon implements Tradeable {
     public void toggleWeapon(boolean isEquipping) {
     }
 
+    @Override
+    public boolean isPokemon() {
+        return true;
+    }
 }
