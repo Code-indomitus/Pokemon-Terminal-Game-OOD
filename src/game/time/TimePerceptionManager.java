@@ -24,8 +24,6 @@ public class TimePerceptionManager {
 
     private int turn;
 
-    private int periodCounter;
-
     private TimePeriod shift; // DAY or NIGHT
 
     /**
@@ -54,7 +52,6 @@ public class TimePerceptionManager {
         timePerceptionList = new ArrayList<>();
         turn = 0;
         shift = TimePeriod.DAY;
-        periodCounter = 0;
     }
 
     /**
@@ -72,8 +69,8 @@ public class TimePerceptionManager {
             System.out.println("It is a Night-time (turn " + turn + ")");
         }
 
-        if ((periodCounter + 1) % 5 == 0) {
-            periodCounter = -1;
+        if ((turn + 1) % 5 == 0) {
+
             if (shift == TimePeriod.DAY) {
                 shift = TimePeriod.NIGHT;
             }
@@ -90,7 +87,6 @@ public class TimePerceptionManager {
                 timeObjects.nightEffect();
             }
         }
-        periodCounter += 1;
         turn += 1;
     }
 
@@ -113,5 +109,6 @@ public class TimePerceptionManager {
      * @param objInstance object instance
      */
     public void cleanUp(TimePerception objInstance) {
+        timePerceptionList.remove(objInstance);
     }
 }
