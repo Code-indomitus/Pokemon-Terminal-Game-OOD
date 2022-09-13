@@ -1,6 +1,8 @@
-package game;
+package game.grounds;
 
+import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
+import game.pokemons.Pokemon;
 
 /**
  * A class that represents the floor inside a building.
@@ -13,5 +15,15 @@ import edu.monash.fit2099.engine.positions.Ground;
 public class Floor extends Ground {
 	public Floor() {
 		super('_');
+	}
+
+	@Override
+	public boolean canActorEnter(Actor actor) {
+		if (actor instanceof Pokemon) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
 }
