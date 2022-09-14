@@ -4,6 +4,7 @@ import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
 import game.time.TimePerceptionManager;
@@ -34,8 +35,18 @@ public class Player extends Actor {
 
 	@Override
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-		// Handle multi-turn Actions
+
+		// Print out the players inventory
+		String inventoryItems = "[";
+		for (Item item : this.getInventory()) {
+			inventoryItems += item + ",";
+		}
+		inventoryItems += "]";
+		System.out.println(inventoryItems);
+
 		TimePerceptionManager.getInstance().run();
+
+		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
 
