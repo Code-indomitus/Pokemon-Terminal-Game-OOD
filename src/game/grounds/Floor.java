@@ -2,6 +2,7 @@ package game.grounds;
 
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.positions.Ground;
+import game.Status;
 import game.pokemons.Pokemon;
 
 /**
@@ -19,7 +20,7 @@ public class Floor extends Ground {
 
 	@Override
 	public boolean canActorEnter(Actor actor) {
-		if (actor instanceof Pokemon) {
+		if (actor.hasCapability(Status.CANNOT_ENTER_FLOOR)) {
 			return false;
 		}
 		else {
