@@ -37,7 +37,7 @@ public class Player extends Actor {
 	public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
 
 		// Print out the players inventory
-		String inventoryItems = "[";
+		String inventoryItems = "inventory: [";
 		for (Item item : this.getInventory()) {
 			inventoryItems += item + ",";
 		}
