@@ -16,6 +16,7 @@ import game.pokemons.Pokemon;
 public class Floor extends Ground {
 	public Floor() {
 		super('_');
+		this.addCapability(Status.CANNOT_BE_EXPANDED);
 	}
 
 	@Override
