@@ -69,7 +69,7 @@ public class TimePerceptionManager {
             System.out.println("It is a Night-time (turn " + turn + ")");
         }
 
-        if ((turn + 1) % 5 == 0) {
+        if ((this.turn + 1) % 5 == 0) {
 
             if (shift == TimePeriod.DAY) {
                 shift = TimePeriod.NIGHT;
@@ -79,15 +79,15 @@ public class TimePerceptionManager {
             }
         }
 
-        for (TimePerception timeObjects : timePerceptionList) {
+        for (int i = 0; i < this.timePerceptionList.size(); i++) {
             if (shift == TimePeriod.DAY) {
-                timeObjects.dayEffect();
+                this.timePerceptionList.get(i).dayEffect();
             }
             else if (shift == TimePeriod.NIGHT) {
-                timeObjects.nightEffect();
+                this.timePerceptionList.get(i).nightEffect();
             }
         }
-        turn += 1;
+        this.turn += 1;
     }
 
 
@@ -109,6 +109,6 @@ public class TimePerceptionManager {
      * @param objInstance object instance
      */
     public void cleanUp(TimePerception objInstance) {
-        timePerceptionList.remove(objInstance);
+        timePerceptionList.remove(timePerceptionList.get(timePerceptionList.indexOf(objInstance)));
     }
 }
