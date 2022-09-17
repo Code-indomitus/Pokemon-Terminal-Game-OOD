@@ -7,12 +7,9 @@ import java.util.List;
 
 /**
  * A global Singleton manager that gives time perception  on the affected instances.
- * TODO: you may modify (add or remove) methods in this class if you think they are not necessary.
- * HINT: refer to Bootcamp Week 5 about static factory method.
- *
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Shyam Kamalesh Borkar and Eng Lim Ooi
  *
  */
 public class TimePerceptionManager {
@@ -22,8 +19,14 @@ public class TimePerceptionManager {
      */
     private final List<TimePerception> timePerceptionList;
 
+    /**
+     * The turn of the game.
+     */
     private int turn;
 
+    /**
+     * The current time period of the game.
+     */
     private TimePeriod shift; // DAY or NIGHT
 
     /**
@@ -33,10 +36,7 @@ public class TimePerceptionManager {
 
     /**
      * Get the singleton instance of time perception manager
-     *
      * @return TimePerceptionManager singleton instance
-     *
-     * FIXME: create a singleton instance.
      */
     public static TimePerceptionManager getInstance() {
         if (instance == null) {
@@ -46,7 +46,7 @@ public class TimePerceptionManager {
     }
 
     /**
-     * Private constructor
+     * Private TimePerceptionManager constructor
      */
     private TimePerceptionManager() {
         timePerceptionList = new ArrayList<>();
@@ -55,10 +55,8 @@ public class TimePerceptionManager {
     }
 
     /**
-     * Traversing through all instances in the list and execute them
+     * Traversing through all instances in the list and execute the dayEffect and nightEffect method accordingly.
      * By doing this way, it will avoid using `instanceof` all over the place.
-     *
-     * FIXME: write a relevant logic (i.e., increment turns choose day or night) and call this method once at every turn.
      */
     public void run() {
 
@@ -92,9 +90,8 @@ public class TimePerceptionManager {
 
 
     /**
-     * Add the TimePerception instance to the list
-     * FIXME: add objInstance to the list.
-     * @param objInstance any instance that implements TimePerception
+     * Add the TimePerception instance to the list.
+     * @param objInstance any instance that implements TimePerception.
      */
     public void append(TimePerception objInstance) {
         this.timePerceptionList.add(objInstance);
@@ -102,11 +99,8 @@ public class TimePerceptionManager {
 
 
     /**
-     * Remove a TimePerception instance from the list
-     *
-     * FIXME: [OPTIONAL] run cleanUp once every turn if you don't want to
-     *        have too many instances in the list (e.g., memory leak)
-     * @param objInstance object instance
+     * Remove a TimePerception instance from the list.
+     * @param objInstance object instance.
      */
     public void cleanUp(TimePerception objInstance) {
         timePerceptionList.remove(timePerceptionList.get(timePerceptionList.indexOf(objInstance)));
