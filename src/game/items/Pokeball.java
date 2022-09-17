@@ -14,4 +14,8 @@ public class Pokeball extends Item {
     public void assignCaughtPokemon(Pokemon caughtPokemon) {
         this.caughtPokemon = caughtPokemon;
     }
+
+    public Pokemon getCaughtPokemon() {
+        return caughtPokemon;
+    }
 }
