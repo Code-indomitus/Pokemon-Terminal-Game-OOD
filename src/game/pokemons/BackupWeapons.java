@@ -1,6 +1,7 @@
 package game.pokemons;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
 
 /**
@@ -14,4 +15,13 @@ import game.actions.AttackAction;
  * @see AttackAction uses getWeapon() in the execute() method.
  */
 public class BackupWeapons {
+    private WeaponItem backupWeapon;
+
+    public BackupWeapons(WeaponItem backupWeapon){
+        this.backupWeapon = backupWeapon;
+    }
+
+    public WeaponItem getBackupWeapon() {
+        return backupWeapon;
+    }
 }
