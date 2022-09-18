@@ -11,7 +11,7 @@ public class Pokefruit extends Item implements Tradeable {
     /**
      * The element of the Pokefruit.
      */
-    private Element pokefruitElement;
+    private final Element pokefruitElement;
 
     /**
      * Pokefruit Constructor.
