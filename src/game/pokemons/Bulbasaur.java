@@ -8,22 +8,21 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actions.AttackAction;
+import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.WanderBehaviour;
 import game.time.TimePerception;
+import game.time.TimePerceptionManager;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bulbasaur extends Pokemon implements TimePerception {
 
-    //FIXME: Change it to a sorted map (is it TreeMap? HashMap? LinkedHashMap?)
-    private final Map<Integer, Behaviour> behaviours = new HashMap<>(); // priority, behaviour
-
     public Bulbasaur() {
         super("Bulbasaur", 'b');
-        this.behaviours.put(10, new WanderBehaviour());
         this.addCapability(Status.CATCHABLE);
+        registerInstance();
     }
 
     /**
@@ -34,10 +33,7 @@ public class Bulbasaur extends Pokemon implements TimePerception {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions = new ActionList();
-        actions.add(new AttackAction(this, direction));
-        //FIXME: allow other actor to attack this Charmander (incl. Player). Please check requirement! :)
-        return actions;
+        return new ActionList();
     }
 
     /**
@@ -45,14 +41,15 @@ public class Bulbasaur extends Pokemon implements TimePerception {
      *
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)
      */
+
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        for (Behaviour behaviour : behaviours.values()) {
-            Action action = behaviour.getAction(this, map);
-            if (action != null)
-                return action;
+        if (!this.isConscious()){
+            TimePerceptionManager.getInstance().cleanUp(this);
+            AffectionManager.getInstance().cleanUp(this);
+            map.removeActor(this);
         }
-        return new DoNothingAction();
+        return super.playTurn(actions, lastAction, map, display);
     }
 
     /**
@@ -63,11 +60,13 @@ public class Bulbasaur extends Pokemon implements TimePerception {
 
     @Override
     public void dayEffect() {
-
+        hurt(5);
     }
 
     @Override
     public void nightEffect() {
-
+        heal(5);
     }
+
+
 }
