@@ -139,4 +139,9 @@ public class AffectionManager {
         return "";
     }
 
+
+    public void cleanUp(Pokemon pokemon){
+        affectionPoints.remove(pokemon);
+    }
+
 }
