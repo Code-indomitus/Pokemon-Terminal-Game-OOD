@@ -20,9 +20,9 @@ public class AffectionManager {
      */
     private static AffectionManager instance;
     /**
-     * HINT: is it just for a Charmander?
+     * Map of Pokemons and their AP
      */
-    private final Map<Charmander, Integer> affectionPoints;
+    private final Map<Pokemon, Integer> affectionPoints;
 
     /**
      * We assume there's only one trainer in this manager.
@@ -59,11 +59,19 @@ public class AffectionManager {
     }
 
     /**
+     * Get the trainer.
+     */
+    public Actor getTrainer() {
+        return this.trainer;
+    }
+
+    /**
      * Add Pokemon to the collection. By default, it has 0 affection point. Ideally, you'll register all instantiated Pokemon
      *
      * @param pokemon
      */
-    public void registerPokemon(Charmander pokemon) {
+    public void registerPokemon(Pokemon pokemon) {
+        affectionPoints.put(pokemon, 0);
     }
 
     /**
@@ -72,7 +80,7 @@ public class AffectionManager {
      * @param pokemon Pokemon instance
      * @return integer of affection point.
      */
-    public int getAffectionPoint(Charmander pokemon) {
+    public int getAffectionPoint(Pokemon pokemon) {
         return affectionPoints.get(pokemon);
     }
 
@@ -82,8 +90,8 @@ public class AffectionManager {
      * @param actor general actor instance
      * @return the Pokemon instance.
      */
-    private Charmander findPokemon(Actor actor) {
-        for (Charmander pokemon : affectionPoints.keySet()) {
+    private Pokemon findPokemon(Actor actor) {
+        for (Pokemon pokemon : affectionPoints.keySet()) {
             if (pokemon.equals(actor)) {
                 return pokemon;
             }
@@ -95,22 +103,39 @@ public class AffectionManager {
      * Increase the affection. Work on both cases when there's a Pokemon,
      * or when it doesn't exist in the collection.
      *
-     * @param actor Actor instance, but we expect a Pokemon here.
+     * @param pokemon Pokemon instance.
      * @param point positive affection modifier
      * @return custom message to be printed by Display instance later.
      */
-    public String increaseAffection(Actor actor, int point) {
+    public String increaseAffection(Pokemon pokemon, int point) {
+        if (!affectionPoints.containsKey(pokemon)) {
+            this.registerPokemon(pokemon);
+        }
+        int affectionPoint = affectionPoints.get(pokemon);
+        affectionPoint += point;
+        if (affectionPoint > 100) {
+            affectionPoint = 100;
+        }
+        affectionPoints.put(pokemon, affectionPoint);
+
         return "";
     }
 
     /**
      * Decrease the affection level of the . Work on both cases when it is
      *
-     * @param actor Actor instance, but we expect a Pokemon here.
+     * @param pokemon Pokemon instance.
      * @param point positive affection modifier (to be subtracted later)
      * @return custom message to be printed by Display instance later.
      */
-    public String decreaseAffection(Actor actor, int point) {
+    public String decreaseAffection(Pokemon pokemon, int point) {
+        if (!affectionPoints.containsKey(pokemon)) {
+            this.registerPokemon(pokemon);
+        }
+        int affectionPoint = affectionPoints.get(pokemon);
+        affectionPoint -= point;
+        affectionPoints.put(pokemon, affectionPoint);
+
         return "";
     }
 
