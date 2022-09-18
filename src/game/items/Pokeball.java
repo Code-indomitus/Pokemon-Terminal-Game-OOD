@@ -1,6 +1,7 @@
 package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.actions.SummonPokemonAction;
 import game.pokemons.Pokemon;
 
 /**
@@ -18,6 +19,7 @@ public class Pokeball extends Item {
      */
     public Pokeball() {
         super("Pokeball", '0', false);
+        this.addAction(new SummonPokemonAction(this));
     }
 
     /**
