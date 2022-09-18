@@ -9,7 +9,9 @@ import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.grounds.*;
+import game.items.Candy;
 import game.nusre.NurseJoy;
+import game.pokemons.AffectionManager;
 import game.pokemons.Charmander;
 /**
  * The main class to start the game.
@@ -43,20 +45,6 @@ public class Application {
                 "~~~~~~.,T,...........................,T,...................",
                 "~~~~~~~~~..................................................");
 
-//        List<String> map = Arrays.asList(
-//                ".............................................^^^^^^^^^^^^^^",
-//                "...........,T,................................,T,..^^^^O^^^",
-//                ".....................................................^^^^^^",
-//                "........................................................^^^",
-//                "..........................#######...........,,...........^^",
-//                "..........................#_____#...........,T............^",
-//                "....................,T....#_____#..........................",
-//                "..,T,......~..............###_###..........................",
-//                "...~~~~~~~~................................................",
-//                "....~~~~~..................._________......................",
-//                "~~W~~~~~....................#......#,,,....................",
-//                "~~~~~~.,T,..................#______#...,T,.................",
-//                "~~~~~~~~~..................................................");
         GameMap gameMap = new GameMap(groundFactory, map);
         world.addGameMap(gameMap);
 
@@ -64,9 +52,8 @@ public class Application {
         Player ash = new Player("Ash", '@', 1);
         world.addPlayer(ash, gameMap.at(32, 10));
 
-        //Add first pokemon - Charmander
-        Actor charmander = new Charmander();
-        gameMap.at(33, 10).addActor(charmander);
+        // Register ash as the trainer in the game
+        AffectionManager.getInstance().registerTrainer(ash);
 
         // Add Nurse Joy
         NurseJoy nurseJoy = new NurseJoy();
