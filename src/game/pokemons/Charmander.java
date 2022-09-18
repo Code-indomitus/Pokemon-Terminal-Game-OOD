@@ -46,7 +46,7 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-       return null;
+       return new ActionList();
     }
 
 
