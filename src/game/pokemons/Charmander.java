@@ -44,35 +44,24 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception {
         return super.playTurn(actions, lastAction, map, display);
     }
 
-    /**
-     * @param otherActor the Actor that might perform an action.
-     * @param direction  String representing the direction of the other Actor
-     * @param map        current GameMap
-     * @return list of actions
-     */
-    @Override
-    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-       return new ActionList();
-    }
 
+    //    /**
+    //     * @param isEquipping FIXME: develop a logic to toggle weapon (put a selected weapon to the inventory - used!);
+    //     */
+    public void toggleWeapon(Pokemon pokemon, GameMap map) {
+        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
 
-//    /**
-//     * @param isEquipping FIXME: develop a logic to toggle weapon (put a selected weapon to the inventory - used!);
-//     */
-public void toggleWeapon(Pokemon pokemon, GameMap map) {
-    boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
-
-    if (pokemon.hasCapability(Element.FIRE) && map.locationOf(pokemon).getGround().hasCapability(Element.FIRE)){
-        if(!containsSpecial){
-            this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon());
+        if (pokemon.hasCapability(Element.FIRE) && map.locationOf(pokemon).getGround().hasCapability(Element.FIRE)){
+            if(!containsSpecial){
+                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon());
+            }
+        }
+        else{
+            if (containsSpecial) {
+                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon());
+            }
         }
     }
-    else{
-        if (containsSpecial) {
-            this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon());
-        }
-    }
-}
 
 
     @Override

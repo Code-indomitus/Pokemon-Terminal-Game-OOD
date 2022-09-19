@@ -5,12 +5,16 @@ import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actions.DoNothingAction;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
+import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
+import game.actions.CatchPokemonAction;
+import game.actions.FeedPokemonAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
+import game.items.Pokefruit;
 
 
 import java.util.Map;
@@ -38,6 +42,26 @@ public abstract class Pokemon extends Actor {
                 return action;
         }
         return new DoNothingAction();
+    }
+
+    /**
+     * @param otherActor the Actor that might perform an action.
+     * @param direction  String representing the direction of the other Actor
+     * @param map        current GameMap
+     * @return list of actions
+     */
+    @Override
+    public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
+        ActionList actions = new ActionList();
+        for (Item item : otherActor.getInventory()) {
+            if (item.hasCapability(Status.FEEDABLE)) {
+                actions.add(new FeedPokemonAction(item, this));
+            }
+        }
+        if (this.hasCapability(Status.CATCHABLE)) {
+            actions.add(new CatchPokemonAction(this));
+        }
+        return actions;
     }
 
     @Override
