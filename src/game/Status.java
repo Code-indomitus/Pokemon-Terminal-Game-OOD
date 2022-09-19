@@ -10,5 +10,6 @@ public enum Status {
     CATCHABLE, // use this status to check if a Pokemon is catchable
     TRADEABLE_CANDY, // used to indicate whether an item in the player's inventory is a candy or not
     CANNOT_ENTER_FLOOR, // used to make sure that actor with this status cannot enter a floor
-    CANNOT_BE_EXPANDED // to identify if the ground can be expanded.
+    CANNOT_BE_EXPANDED, // to identify if the ground can be expanded.
+    FEEDABLE // used to identify if an item is feedable
 }
