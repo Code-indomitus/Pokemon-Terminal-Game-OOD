@@ -1,6 +1,7 @@
 package game.items;
 
 import edu.monash.fit2099.engine.items.Item;
+import game.Status;
 import game.elements.Element;
 import game.nusre.Tradeable;
 
@@ -21,6 +22,7 @@ public class Pokefruit extends Item implements Tradeable {
         super(pokefruitElement + " Pokefruit", 'f', true);
         this.pokefruitElement = pokefruitElement;
         this.addCapability(pokefruitElement);
+        this.addCapability(Status.FEEDABLE);
 
     }
 
