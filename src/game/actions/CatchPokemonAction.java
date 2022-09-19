@@ -25,6 +25,7 @@ public class CatchPokemonAction extends Action {
 
         Pokeball newPokeball = new Pokeball();
         newPokeball.assignCaughtPokemon(pokemonToBeCaught);
+        actor.addItemToInventory(newPokeball);
         // Spawn candy when pokemon is captured.
         map.locationOf(pokemonToBeCaught).addItem(new Candy());
         map.removeActor(pokemonToBeCaught);
