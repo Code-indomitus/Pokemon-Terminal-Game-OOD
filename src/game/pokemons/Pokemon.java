@@ -14,8 +14,6 @@ import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
 import game.behaviours.WanderBehaviour;
-import game.items.Pokefruit;
-
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -29,9 +27,11 @@ public abstract class Pokemon extends Actor {
         this.addCapability(Status.CANNOT_ENTER_FLOOR);
         AffectionManager.getInstance().registerPokemon(this);
 
-        this.behaviours.put(10, new WanderBehaviour());
-        this.behaviours.put(20, new FollowBehaviour(AffectionManager.getInstance().getTrainer()));
-        this.behaviours.put(30, new AttackBehaviour());
+        this.behaviours.put(1, new AttackBehaviour());
+        this.behaviours.put(2, new FollowBehaviour(AffectionManager.getInstance().getTrainer()));
+        this.behaviours.put(3, new WanderBehaviour());
+
+
 
     }
 
