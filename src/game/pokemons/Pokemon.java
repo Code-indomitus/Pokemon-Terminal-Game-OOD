@@ -40,7 +40,9 @@ public abstract class Pokemon extends Actor {
         return new DoNothingAction();
     }
 
+    @Override
+    public String toString() {
+        return name + " " + printHp() + "(AP: " + AffectionManager.getInstance().getAffectionPoint(this) + ")";
 
-
-//    public abstract void addWeapon();
+    }
 }
