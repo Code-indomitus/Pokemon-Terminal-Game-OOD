@@ -1,9 +1,7 @@
 package game.pokemons;
 
-
 import edu.monash.fit2099.engine.actions.Action;
 import edu.monash.fit2099.engine.actions.ActionList;
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
@@ -45,9 +43,6 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception {
     }
 
 
-    //    /**
-    //     * @param isEquipping FIXME: develop a logic to toggle weapon (put a selected weapon to the inventory - used!);
-    //     */
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
         boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
 
