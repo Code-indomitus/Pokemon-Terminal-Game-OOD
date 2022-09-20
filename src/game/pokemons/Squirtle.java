@@ -32,11 +32,6 @@ public class Squirtle extends Pokemon implements TimePerception {
      */
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (!this.isConscious()){
-            TimePerceptionManager.getInstance().cleanUp(this);
-            AffectionManager.getInstance().cleanUp(this);
-            map.removeActor(this);
-        }
         this.toggleWeapon(this, map);
         return super.playTurn(actions, lastAction, map, display);
     }
@@ -61,6 +56,9 @@ public class Squirtle extends Pokemon implements TimePerception {
     @Override
     public void dayEffect() {
         hurt(10);
+        if (!this.isConscious()) {
+            TimePerceptionManager.getInstance().cleanUp(this);
+        }
     }
 
     @Override

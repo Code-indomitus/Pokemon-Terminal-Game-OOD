@@ -25,7 +25,6 @@ public class Bulbasaur extends Pokemon implements TimePerception {
         this.addCapability(Element.GRASS);
         this.addCapability(Status.CATCHABLE);
         this.pokemonBackupWeapons = new BackupWeapons(new VineWhip("Vinewhip",'|',30,"whips", 70));
-
         registerInstance();
     }
 
@@ -37,11 +36,6 @@ public class Bulbasaur extends Pokemon implements TimePerception {
 
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        if (!this.isConscious()){
-            TimePerceptionManager.getInstance().cleanUp(this);
-            AffectionManager.getInstance().cleanUp(this);
-            map.removeActor(this);
-        }
         this.toggleWeapon(this, map);
         return super.playTurn(actions, lastAction, map, display);
     }
@@ -65,6 +59,9 @@ public class Bulbasaur extends Pokemon implements TimePerception {
     @Override
     public void dayEffect() {
         hurt(5);
+        if (!this.isConscious()) {
+            TimePerceptionManager.getInstance().cleanUp(this);
+        }
     }
 
     @Override

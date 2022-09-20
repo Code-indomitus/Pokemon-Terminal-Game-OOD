@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.actions.CatchPokemonAction;
 import game.actions.FeedPokemonAction;
+import game.actions.KilledAction;
 import game.behaviours.AttackBehaviour;
 import game.behaviours.Behaviour;
 import game.behaviours.FollowBehaviour;
@@ -27,7 +28,7 @@ public abstract class Pokemon extends Actor {
         this.addCapability(Status.CANNOT_ENTER_FLOOR);
         AffectionManager.getInstance().registerPokemon(this);
 
-        this.behaviours.put(1, new AttackBehaviour());
+        this.behaviours.put(1, new AttackBehaviour(this));
         this.behaviours.put(2, new FollowBehaviour(AffectionManager.getInstance().getTrainer()));
         this.behaviours.put(3, new WanderBehaviour());
 
@@ -36,6 +37,11 @@ public abstract class Pokemon extends Actor {
     }
 
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        if (!this.isConscious()){
+            AffectionManager.getInstance().cleanUp(this);
+            map.removeActor(this);
+            return new KilledAction();
+        }
         for (Behaviour behaviour : behaviours.values()) {
             Action action = behaviour.getAction(this, map);
             if (action != null)
