@@ -22,7 +22,7 @@ public class AffectionManager {
     /**
      * Map of Pokemons and their AP
      */
-    private final Map<Pokemon, Integer> affectionPoints;
+    private final Map<Actor, Integer> affectionPoints;
 
     /**
      * We assume there's only one trainer in this manager.
@@ -70,7 +70,7 @@ public class AffectionManager {
      *
      * @param pokemon
      */
-    public void registerPokemon(Pokemon pokemon) {
+    public void registerPokemon(Actor pokemon) {
         affectionPoints.put(pokemon, 0);
     }
 
@@ -80,7 +80,7 @@ public class AffectionManager {
      * @param pokemon Pokemon instance
      * @return integer of affection point.
      */
-    public int getAffectionPoint(Pokemon pokemon) {
+    public int getAffectionPoint(Actor pokemon) {
         return affectionPoints.get(pokemon);
     }
 
@@ -90,8 +90,8 @@ public class AffectionManager {
      * @param actor general actor instance
      * @return the Pokemon instance.
      */
-    private Pokemon findPokemon(Actor actor) {
-        for (Pokemon pokemon : affectionPoints.keySet()) {
+    private Actor findPokemon(Actor actor) {
+        for (Actor pokemon : affectionPoints.keySet()) {
             if (pokemon.equals(actor)) {
                 return pokemon;
             }
