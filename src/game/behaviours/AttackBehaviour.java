@@ -36,7 +36,7 @@ public class AttackBehaviour implements Behaviour {
             Location destination = exit.getDestination();
             if (destination.containsAnActor() && !destination.getActor().hasCapability(Status.IMMUNE)) {
                 if (!ElementsHelper.hasAnySimilarElements(destination.getActor(), attackingActor.findCapabilitiesByType(Element.class))){
-                    return new AttackAction(destination.getActor(),"there", map);// behaviour will stop here.
+                    return new AttackAction(destination.getActor(),"there");// behaviour will stop here.
                 }
             }
         }
