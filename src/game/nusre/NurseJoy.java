@@ -31,7 +31,7 @@ public class NurseJoy extends Actor {
      */
     @Override
     public ActionList allowableActions(Actor otherActor, String direction, GameMap map) {
-        ActionList actions =  TradeManager.getTradeActions(otherActor);
+        ActionList actions =  TradeManager.getTradeActions();
         return actions;
     }
 
