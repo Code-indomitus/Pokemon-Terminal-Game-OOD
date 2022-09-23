@@ -13,40 +13,55 @@ import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 
 import java.util.Random;
-
+/**
+ * @author Shyam Kamalesh Borkar
+ * Class for Tree (Spawning Ground)
+ */
 public class Tree extends SpawningGround implements TimePerception {
 
     Location location;
-
+    /***
+     * Random class used to randomly expand Tree or Hay
+     */
     private final Random randomGenerator = new Random();
 
     /**
-     * Constructor.
-     *
+     * Tree Constructor
      */
     public Tree() {
         super('T', 0.15, 0.15, 1, Element.GRASS);
         this.registerInstance();
     }
-
+    /**
+     * Overridden tick method to get the location of the ground and call spawning ground tick
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         this.location = location;
         super.tick(location);
     }
 
+    /**
+     * Overridden method to spawn the ground specific pokemon
+     * @param spawnLocation
+     */
     @Override
     public void spawnPokemon(Location spawnLocation) {
         spawnLocation.addActor(new Bulbasaur());
     }
-
+    /**
+     * Dayeffect of tree class
+     */
     @Override
     public void dayEffect() {
         if (Math.random() <= 0.05 && this.location != null) {
             this.location.addItem(new Candy());
         }
     }
-
+    /**
+     * Nighteffect of tree class
+     */
     @Override
     public void nightEffect() {
         if (Math.random() <= 0.1 && this.location != null) {
