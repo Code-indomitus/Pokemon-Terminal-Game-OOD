@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.elements.Element;
-import game.nusre.Tradeable;
+import game.nurse.Tradeable;
 import game.weapons.Ember;
 
 /**

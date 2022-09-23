@@ -3,7 +3,7 @@ package game.items;
 import edu.monash.fit2099.engine.items.Item;
 import game.Status;
 import game.elements.Element;
-import game.nusre.Tradeable;
+import game.nurse.Tradeable;
 
 /**
  * @author Eng Lim Ooi

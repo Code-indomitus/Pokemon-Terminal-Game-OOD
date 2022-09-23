@@ -1,12 +1,10 @@
-package game.nusre;
+package game.nurse;
 
 import edu.monash.fit2099.engine.actions.ActionList;
 import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.items.Item;
 import game.Status;
-import game.actions.AttackAction;
 import game.elements.Element;
-import game.items.Candy;
 import game.items.Pokefruit;
 import game.pokemons.Charmander;
 

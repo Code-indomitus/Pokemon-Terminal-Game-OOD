@@ -1,4 +1,4 @@
-package game.nusre;
+package game.nurse;
 
 /**
  * Interface for classes that are tradeable in the game
