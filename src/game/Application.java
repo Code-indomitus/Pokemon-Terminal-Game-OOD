@@ -3,22 +3,20 @@ package game;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.World;
 import game.grounds.*;
 import game.items.Candy;
-import game.nusre.NurseJoy;
+import game.nurse.NurseJoy;
 import game.pokemons.AffectionManager;
-import game.pokemons.Charmander;
+
 /**
  * The main class to start the game.
- * Created by:
- *
+ * Created by:Riordan D. Alfredo
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Shyam Kamalesh Borkar
  */
 public class Application {
 
@@ -49,8 +47,9 @@ public class Application {
         world.addGameMap(gameMap);
 
         //Add player - Ash
-        Player ash = new Player("Ash", '@', 1);
+        Player ash = new Player("Ash", '@', 100);
         world.addPlayer(ash, gameMap.at(32, 10));
+
 
         // Register ash as the trainer in the game
         AffectionManager.getInstance().registerTrainer(ash);
