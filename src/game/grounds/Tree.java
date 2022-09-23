@@ -44,7 +44,7 @@ public class Tree extends SpawningGround implements TimePerception {
 
     /**
      * Overridden method to spawn the ground specific pokemon
-     * @param spawnLocation
+     * @param spawnLocation location to spawn the pokemon
      */
     @Override
     public void spawnPokemon(Location spawnLocation) {
