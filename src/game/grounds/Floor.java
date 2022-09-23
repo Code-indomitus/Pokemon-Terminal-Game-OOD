@@ -7,18 +7,22 @@ import game.pokemons.Pokemon;
 
 /**
  * A class that represents the floor inside a building.
- *
- * Created by:
- * @author Riordan D. Alfredo
- * Modified by:
- *
+ * Created by: Shyam Kamalesh Borkar
  */
 public class Floor extends Ground {
+	/**
+	 * Floor constructor
+	 */
 	public Floor() {
 		super('_');
 		this.addCapability(Status.CANNOT_BE_EXPANDED);
 	}
 
+	/**
+	 * Overridden method to stop actors that cannot enter floors
+	 * @param actor the Actor to check
+	 * @return
+	 */
 	@Override
 	public boolean canActorEnter(Actor actor) {
 		if (actor.hasCapability(Status.CANNOT_ENTER_FLOOR)) {
