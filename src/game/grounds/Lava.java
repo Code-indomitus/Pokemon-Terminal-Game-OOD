@@ -12,16 +12,18 @@ import game.time.TimePerceptionManager;
 /**
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
- *
+ * Modified by: Shyam Kamalesh Borkar
+ * Class for Lava (Ground)
  */
 public class Lava extends Ground implements TimePerception {
 
-    // Location of the ground object on the map
+    /**
+     * Location of the ground object on the map
+     */
     Location location;
 
     /**
-     * Constructor.
+     * Lava Constructor.
      */
     public Lava() {
         super('^');
@@ -29,11 +31,17 @@ public class Lava extends Ground implements TimePerception {
         this.registerInstance();
     }
 
+    /**
+     * Overridden tick method to get the location of the ground
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         this.location = location;
     }
-
+    /**
+     * Dayeffect of Lava class
+     */
     @Override
     public void dayEffect() {
         if (Math.random() <= 0.1 && this.location != null) {
@@ -45,7 +53,9 @@ public class Lava extends Ground implements TimePerception {
             }
         }
     }
-
+    /**
+     * Nighteffect of Lava class
+     */
     @Override
     public void nightEffect() {
         if ((Math.random() <= 0.1 && this.location != null) && !location.containsAnActor()){

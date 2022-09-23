@@ -9,13 +9,19 @@ import game.elements.ElementsHelper;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 
+/**
+ * @author Shyam Kamalesh Borkar
+ * Class for Puddle (Ground)
+ */
 public class Puddle extends Ground implements TimePerception {
 
-    // Location of the ground object on the map
+    /**
+     * Location of the ground object on the map
+     */
     Location location;
 
     /**
-     * Constructor.
+     *  Puddle Constructor.
      *
      */
     public Puddle() {
@@ -24,11 +30,18 @@ public class Puddle extends Ground implements TimePerception {
         this.registerInstance();
     }
 
+    /**
+     * Overridden tick method to get the location of the ground
+     * @param location The location of the Ground
+     */
     @Override
     public void tick(Location location) {
         this.location = location;
     }
 
+    /**
+     * Dayeffect of Puddle class
+     */
     @Override
     public void dayEffect() {
         if (Math.random() <= 0.1 && this.location != null){
@@ -37,6 +50,9 @@ public class Puddle extends Ground implements TimePerception {
         }
     }
 
+    /**
+     * Nighteffect of puddle class
+     */
     @Override
     public void nightEffect() {
         if (Math.random() <= 0.1 && this.location != null) {
