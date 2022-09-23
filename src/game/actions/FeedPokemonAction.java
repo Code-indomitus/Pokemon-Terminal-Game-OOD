@@ -21,7 +21,7 @@ public class FeedPokemonAction extends Action {
     @Override
     public String execute(Actor actor, GameMap map) {
         actor.removeItemFromInventory(pokefruitToFeed);
-        if (ElementsHelper.hasAnySimilarElements(pokefruitToFeed, pokefruitToFeed.findCapabilitiesByType(Element.class))) {
+        if (ElementsHelper.hasAnySimilarElements(pokefruitToFeed, pokemonToFeed.findCapabilitiesByType(Element.class))) {
             AffectionManager.getInstance().increaseAffection(pokemonToFeed, 20);
             return pokemonToFeed + " likes it! +20 affection points";
         }
