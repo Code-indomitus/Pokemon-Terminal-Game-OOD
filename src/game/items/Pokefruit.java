@@ -6,6 +6,7 @@ import game.elements.Element;
 import game.nusre.Tradeable;
 
 /**
+ * @author Eng Lim Ooi
  * A class that represents Pokefruit item.
  */
 public class Pokefruit extends Item implements Tradeable {
