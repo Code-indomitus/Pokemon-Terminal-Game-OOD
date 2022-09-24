@@ -9,8 +9,20 @@ import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.positions.Location;
 
+/**
+ * A class that figures out a mOVE action that will make an actor move in a random direction
+ * to a new valid location on the map
+ *
+ * Created by:
+ * @author Riordan D. Alfredo
+ * Modified by: Arrtish Suthan, Shyam Kamalesh Borkar
+ *
+ */
 public class WanderBehaviour implements Behaviour {
-	
+
+	/**
+	 * a random instance that generates a random number within a range of values
+	 */
 	private final Random random = new Random();
 
 	/**
