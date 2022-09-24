@@ -15,7 +15,7 @@ import game.pokemons.AffectionManager;
  *
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Shyam Kamalesh Borkar, Arrtish Suthan
  *
  */
 public class FollowBehaviour implements Behaviour {
@@ -31,6 +31,12 @@ public class FollowBehaviour implements Behaviour {
 		this.target = subject;
 	}
 
+	/**
+	 *
+	 * @param actor the Actor acting
+	 * @param map the GameMap containing the Actor
+	 * @return a move action to move the pokemon closer to its target, or null if the conditions aren't met
+	 */
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		if(!map.contains(target) || !map.contains(actor) || AffectionManager.getInstance().getAffectionPoint(actor) < 75)
