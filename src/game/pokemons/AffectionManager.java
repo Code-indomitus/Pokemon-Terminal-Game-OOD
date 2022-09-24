@@ -9,9 +9,8 @@ import java.util.Map;
  * Affection Manager
  * <p>
  * Created by:
- *
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Shyam Kamalesh Borkar
  */
 public class AffectionManager {
 
