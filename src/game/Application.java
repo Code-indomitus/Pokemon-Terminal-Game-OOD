@@ -58,6 +58,7 @@ public class Application {
         NurseJoy nurseJoy = new NurseJoy();
         gameMap.at(31, 5).addActor(nurseJoy);
 
+        //running the game
         world.run();
 
     }
