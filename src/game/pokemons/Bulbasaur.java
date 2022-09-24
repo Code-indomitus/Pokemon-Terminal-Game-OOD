@@ -12,14 +12,25 @@ import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.weapons.VineWhip;
 
-import java.util.HashMap;
-import java.util.Map;
 
+/**
+ * Class representing the Bylbasaur pokemon daughter class
+ *
+ * Created by:
+ * @author Shyam Kamalesh Borkar
+ * Modified by: Arrtish Suthan
+ *
+ */
 public class Bulbasaur extends Pokemon implements TimePerception {
 
+    /**
+     * pokemonBackupWeapons attribute made from BackupWeapons class
+     */
     private BackupWeapons pokemonBackupWeapons;
 
-
+    /**
+     * Constructor
+     */
     public Bulbasaur() {
         super("Bulbasaur", 'b');
         this.addCapability(Element.GRASS);
@@ -30,10 +41,8 @@ public class Bulbasaur extends Pokemon implements TimePerception {
 
     /**
      * By using behaviour loops, it will decide what will be the next action automatically.
-     *
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)
      */
-
     @Override
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         this.toggleWeapon(this, map);
@@ -41,6 +50,11 @@ public class Bulbasaur extends Pokemon implements TimePerception {
     }
 
 
+    /**
+     * Method to toggle a weapon from the pokemon's respective backupweapon attribute to its item inventory
+     * @param pokemon pokemon actor calling for the toggleweapon method
+     * @param map map of the world in which the pokemon is in
+     */
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
         boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
 
@@ -56,6 +70,9 @@ public class Bulbasaur extends Pokemon implements TimePerception {
         }
     }
 
+    /**
+     * method to affect bulbasaur object when the time shifts from night to day
+     */
     @Override
     public void dayEffect() {
         hurt(5);
@@ -64,11 +81,18 @@ public class Bulbasaur extends Pokemon implements TimePerception {
         }
     }
 
+    /**
+     * method to affect Bulbasaur object when the time shifts from day to night
+     */
     @Override
     public void nightEffect() {
         heal(5);
     }
 
+    /**
+     * method to set the Bulbasaur's intrinsic attack
+     * @return the Bulbasaur's intrinsic weapon
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(10, "tackle");
