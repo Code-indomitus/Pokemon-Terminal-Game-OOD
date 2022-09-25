@@ -19,10 +19,22 @@ import game.behaviours.WanderBehaviour;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * Class representing the Pokemon parent class
+ *
+ * Created by:
+ * @author Riordan D. Alfredo
+ * Modified by:  Shyam Kamalesh Borkar, Arrtish Suthan
+ *
+ */
 public abstract class Pokemon extends Actor {
     private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
 
-
+    /**
+     * constructor
+     * @param pokemonName name of the pokemon object
+     * @param pokemonDisplayChar character used to denote the presence of the pokemon on the map
+     */
     public Pokemon(String pokemonName, char pokemonDisplayChar) {
         super(pokemonName, pokemonDisplayChar, 100);
         this.addCapability(Status.CANNOT_ENTER_FLOOR);
@@ -36,6 +48,14 @@ public abstract class Pokemon extends Actor {
 
     }
 
+    /**
+     *
+     * @param actions    collection of possible Actions for this Actor
+     * @param lastAction The Action this Actor took last turn. Can do interesting things in conjunction with Action.getNextAction()
+     * @param map        the map containing the Actor
+     * @param display    the I/O object to which messages may be written
+     * @return
+     */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
         if (!this.isConscious()){
             AffectionManager.getInstance().cleanUp(this);
@@ -70,6 +90,10 @@ public abstract class Pokemon extends Actor {
         return actions;
     }
 
+    /**
+     *
+     * @return the respective pokemon's name, hp and AP points
+     */
     @Override
     public String toString() {
         return name + " " + printHp() + "(AP: " + AffectionManager.getInstance().getAffectionPoint(this) + ")";

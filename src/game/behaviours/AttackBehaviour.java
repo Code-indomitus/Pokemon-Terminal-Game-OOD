@@ -13,21 +13,33 @@ import game.pokemons.Charmander;
 import game.pokemons.Squirtle;
 
 /**
+ * A class that figures out an Attack action that will make an actor attack a valid target
+ *
  * Created by:
  * @author Riordan D. Alfredo
- * Modified by:
+ * Modified by: Arrtish Suthan, Shyam Kamalesh Borkar
  *
  */
 public class AttackBehaviour implements Behaviour {
 
+    /**
+     * attackbehaviour attribute to store the attacking actor
+     */
     private Actor attackingActor;
 
+    /**
+     *
+     * @param attackingActor actor carrying out the attack
+     */
     public AttackBehaviour(Actor attackingActor) {
         this.attackingActor = attackingActor;
     }
 
     /**
-     *  HINT: develop a logic to check surrounding, check elements, and return an action to attack that opponent.
+     * method to check the current pokemon's surrounding's for a valid target to attack. If there is a valid target, the AttackAction class is called.
+     * @param actor the current actor checking its surroundings
+     * @param map the GameMap containing the Actor
+     * @return an attack action if the conditions are met, or null if the conditions aren't met
      */
     @Override
     public Action getAction(Actor actor, GameMap map) {

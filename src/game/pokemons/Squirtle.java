@@ -12,11 +12,24 @@ import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.weapons.Bubble;
 
-
+/**
+ * Class representing the Squirtle pokemon daughter class
+ *
+ * Created by:
+ * @author Shyam Kamalesh Borkar
+ * Modified by: Arrtish Suthan
+ *
+ */
 public class Squirtle extends Pokemon implements TimePerception {
 
+    /**
+     * pokemonBackupWeapons attribute made from BackupWeapons class
+     */
     private BackupWeapons pokemonBackupWeapons;
 
+    /**
+     * Constructor
+     */
     public Squirtle() {
         super("Squirtle", 's');
         this.addCapability(Element.WATER);
@@ -27,7 +40,6 @@ public class Squirtle extends Pokemon implements TimePerception {
 
     /**
      * By using behaviour loops, it will decide what will be the next action automatically.
-     *
      * @see Actor#playTurn(ActionList, Action, GameMap, Display)
      */
     @Override
@@ -36,7 +48,11 @@ public class Squirtle extends Pokemon implements TimePerception {
         return super.playTurn(actions, lastAction, map, display);
     }
 
-
+    /**
+     * Method to toggle a weapon from the pokemon's respective backupweapon attribute to its item inventory
+     * @param pokemon pokemon actor calling for the toggleweapon method
+     * @param map map of the world in which the pokemon is in
+     */
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
         boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
 
@@ -53,6 +69,9 @@ public class Squirtle extends Pokemon implements TimePerception {
         }
     }
 
+    /**
+     * method to affect Squirtle object when the time shifts from night to day
+     */
     @Override
     public void dayEffect() {
         hurt(10);
@@ -61,11 +80,18 @@ public class Squirtle extends Pokemon implements TimePerception {
         }
     }
 
+    /**
+     * method to affect Squirtle object when the time shifts from day to night
+     */
     @Override
     public void nightEffect() {
         heal(10);
     }
 
+    /**
+     * method to set the Squirtle's intrinsic attack
+     * @return the Squirtle's intrinsic weapon
+     */
     @Override
     protected IntrinsicWeapon getIntrinsicWeapon() {
         return new IntrinsicWeapon(10, "tackle");
