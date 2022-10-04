@@ -32,7 +32,7 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception {
     public Charmander() {
         super("Charmander", 'c');
         this.addCapability(Element.FIRE);
-        this.pokemonBackupWeapons = new BackupWeapons(new Ember("Ember",'|',20,"sparks", 90));
+        this.pokemonBackupWeapons = new BackupWeapons(new Ember());
         registerInstance();
 
     }

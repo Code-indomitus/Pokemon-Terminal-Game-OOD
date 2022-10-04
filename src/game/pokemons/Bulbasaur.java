@@ -35,7 +35,7 @@ public class Bulbasaur extends Pokemon implements TimePerception {
         super("Bulbasaur", 'b');
         this.addCapability(Element.GRASS);
         this.addCapability(Status.CATCHABLE);
-        this.pokemonBackupWeapons = new BackupWeapons(new VineWhip("Vinewhip",'|',30,"whips", 70));
+        this.pokemonBackupWeapons = new BackupWeapons(new VineWhip());
         registerInstance();
     }
 

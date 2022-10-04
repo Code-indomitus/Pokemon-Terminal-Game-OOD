@@ -34,7 +34,7 @@ public class Squirtle extends Pokemon implements TimePerception {
         super("Squirtle", 's');
         this.addCapability(Element.WATER);
         this.addCapability(Status.CATCHABLE);
-        this.pokemonBackupWeapons = new BackupWeapons(new Bubble("Bubble",'|',25,"burbles", 80));
+        this.pokemonBackupWeapons = new BackupWeapons(new Bubble());
         registerInstance();
     }
 
