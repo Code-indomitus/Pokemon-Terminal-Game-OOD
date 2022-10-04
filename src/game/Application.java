@@ -6,10 +6,14 @@ import java.util.List;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.FancyGroundFactory;
 import edu.monash.fit2099.engine.positions.GameMap;
+import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.grounds.*;
 import game.items.Candy;
 import game.nurse.NurseJoy;
+import game.pokemoncenter.Door;
+import game.pokemoncenter.EnterPalletTownAction;
+import game.pokemoncenter.EnterPokemonCenterAction;
 import game.pokemons.AffectionManager;
 
 /**
@@ -24,39 +28,72 @@ public class Application {
 
         World world = new World(new Display());
 
-        FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(),
+        FancyGroundFactory palletTownGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(),
                 new Floor(), new Tree(),
                 new Lava(), new Puddle(), new Crater(), new Waterfall(), new Hay());
 
-        List<String> map = Arrays.asList(
+        FancyGroundFactory pokemonCenterGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(),
+                new Floor());
+
+        List<String> palletTownStrings = Arrays.asList(
                 ".............................................^^^^^^^^^^^^^^",
                 "...........,T,................................,T,..^^^^O^^^",
                 ".....................................................^^^^^^",
                 "........................................................^^^",
-                "..........................#######...........,,...........^^",
-                "..........................#_____#...........,T............^",
-                "....................,T....#_____#..........................",
-                "..,T,......~..............###_###..........................",
+                "............................................,,...........^^",
+                "............................###.............,T............^",
+                "....................,T......#_#............................",
+                "..,T,......~...............................................",
                 "...~~~~~~~~................................................",
                 "....~~~~~..................................................",
                 "~~W~~~~~.............................,,,...................",
                 "~~~~~~.,T,...........................,T,...................",
                 "~~~~~~~~~..................................................");
 
-        GameMap gameMap = new GameMap(groundFactory, map);
-        world.addGameMap(gameMap);
+        List<String> pokemonCenterStrings = Arrays.asList(
+                "##################",
+                "#________________#",
+                "#______....._____#",
+                "#________________#",
+                "#________________#",
+                "########___#######");
+
+        GameMap palletTown = new GameMap(palletTownGroundFactory, palletTownStrings);
+        world.addGameMap(palletTown);
+
+        GameMap pokemonCenter = new GameMap(pokemonCenterGroundFactory, pokemonCenterStrings);
+        world.addGameMap(pokemonCenter);
 
         //Add player - Ash
         Player ash = new Player("Ash", '@', 100);
-        world.addPlayer(ash, gameMap.at(32, 10));
+        world.addPlayer(ash, palletTown.at(32, 10));
 
+        for (int i = 0; i < 7; i++) {
+            ash.addItemToInventory(new Candy());
+        }
 
         // Register ash as the trainer in the game
         AffectionManager.getInstance().registerTrainer(ash);
 
-        // Add Nurse Joy
+        // Add Nurse Joy in the pokemon center
         NurseJoy nurseJoy = new NurseJoy();
-        gameMap.at(31, 5).addActor(nurseJoy);
+        pokemonCenter.at(9, 2).addActor(nurseJoy);
+
+        // Action to enter pokemon center
+        EnterPokemonCenterAction enterCenter = new EnterPokemonCenterAction(pokemonCenter, pokemonCenter.at(9, 5));
+        // Door that opens to Pokemon Center
+        Door doorToCenter = new Door(enterCenter);
+        // Place the door in Pallet Town
+        palletTown.at(29, 6).addItem(doorToCenter);
+
+
+
+        // Action to enter pallet town
+        EnterPalletTownAction enterTown = new EnterPalletTownAction(palletTown, palletTown.at(29, 6));
+        // Door that opens to Pallet Town
+        Door doorToPallet = new Door(enterTown);
+        // Place the door in Pokemon Center
+        pokemonCenter.at(9, 5).addItem(doorToPallet);
 
         //running the game
         world.run();
