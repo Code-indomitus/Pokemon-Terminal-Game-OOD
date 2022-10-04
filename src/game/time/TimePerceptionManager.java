@@ -67,6 +67,15 @@ public class TimePerceptionManager {
             System.out.println("It is a Night-time (turn " + turn + ")");
         }
 
+        for (int i = 0; i < this.timePerceptionList.size(); i++) {
+            if (shift == TimePeriod.DAY) {
+                this.timePerceptionList.get(i).dayEffect();
+            }
+            else if (shift == TimePeriod.NIGHT) {
+                this.timePerceptionList.get(i).nightEffect();
+            }
+        }
+
         if ((this.turn + 1) % 5 == 0) {
 
             if (shift == TimePeriod.DAY) {
@@ -77,14 +86,6 @@ public class TimePerceptionManager {
             }
         }
 
-        for (int i = 0; i < this.timePerceptionList.size(); i++) {
-            if (shift == TimePeriod.DAY) {
-                this.timePerceptionList.get(i).dayEffect();
-            }
-            else if (shift == TimePeriod.NIGHT) {
-                this.timePerceptionList.get(i).nightEffect();
-            }
-        }
         this.turn += 1;
     }
 
