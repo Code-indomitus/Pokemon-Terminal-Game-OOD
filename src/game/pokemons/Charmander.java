@@ -19,7 +19,7 @@ import game.weapons.Ember;
  * @author Riordan D. Alfredo
  * Modified by:  Shyam Kamalesh Borkar, Arrtish Suthan
  */
-public class Charmander extends Pokemon implements Tradeable, TimePerception {
+public class Charmander extends Pokemon implements Tradeable, TimePerception, Hatchable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -104,4 +104,9 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception {
         return new IntrinsicWeapon(10, "scratch");
     }
 
+    @Override
+    public int getHatchTime() {
+        int hatchTime = 4;
+        return hatchTime;
+    }
 }
