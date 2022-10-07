@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import game.Status;
 import game.items.Pokeball;
+import game.items.PokemonEgg;
+import game.pokemons.Hatchable;
 import game.pokemons.Pokemon;
 
 import java.util.ArrayList;
@@ -49,9 +51,8 @@ public class TradeAction extends Action {
             return actor + " has insufficient balance to get " + itemToBeTraded + ".";
         }
         if (itemToBeTraded.isPokemon()) {
-            Pokeball pokeball = new Pokeball();
-            pokeball.assignCaughtPokemon((Pokemon) itemToBeTraded);
-            actor.addItemToInventory(pokeball);
+            PokemonEgg pokeEgg = new PokemonEgg((Hatchable) itemToBeTraded);
+            actor.addItemToInventory(pokeEgg);
         }
         else {
             actor.addItemToInventory((Item) itemToBeTraded);
