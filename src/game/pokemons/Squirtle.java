@@ -20,7 +20,7 @@ import game.weapons.Bubble;
  * Modified by: Arrtish Suthan
  *
  */
-public class Squirtle extends Pokemon implements TimePerception {
+public class Squirtle extends Pokemon implements TimePerception, Hatchable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -98,4 +98,9 @@ public class Squirtle extends Pokemon implements TimePerception {
     }
 
 
+    @Override
+    public int getHatchTime() {
+        int hatchTime = 2;
+        return hatchTime;
+    }
 }
