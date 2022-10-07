@@ -33,7 +33,7 @@ public class Application {
                 new Lava(), new Puddle(), new Crater(), new Waterfall(), new Hay());
 
         FancyGroundFactory pokemonCenterGroundFactory = new FancyGroundFactory(new Dirt(), new Wall(),
-                new Floor());
+                new Floor(), new Incubator());
 
         List<String> palletTownStrings = Arrays.asList(
                 ".............................................^^^^^^^^^^^^^^",
@@ -53,7 +53,7 @@ public class Application {
         List<String> pokemonCenterStrings = Arrays.asList(
                 "##################",
                 "#________________#",
-                "#______....._____#",
+                "#______X...X_____#",
                 "#________________#",
                 "#________________#",
                 "########___#######");
