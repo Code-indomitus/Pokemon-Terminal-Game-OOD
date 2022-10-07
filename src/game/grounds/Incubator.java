@@ -9,7 +9,7 @@ public class Incubator extends Ground {
      * Incubator Constructor.
      */
     public Incubator() {
-        super('x');
+        super('X');
         this.addCapability(Status.INCUBATE);
     }
 }
