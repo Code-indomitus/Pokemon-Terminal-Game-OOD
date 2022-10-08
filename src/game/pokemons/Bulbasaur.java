@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.elements.Element;
+import game.nurse.Tradeable;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.weapons.VineWhip;
@@ -21,7 +22,7 @@ import game.weapons.VineWhip;
  * Modified by: Arrtish Suthan
  *
  */
-public class Bulbasaur extends Pokemon implements TimePerception, Hatchable {
+public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tradeable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -102,5 +103,10 @@ public class Bulbasaur extends Pokemon implements TimePerception, Hatchable {
     public int getHatchTime() {
         int hatchTime = 3;
         return hatchTime;
+    }
+
+    @Override
+    public boolean isPokemon() {
+        return true;
     }
 }

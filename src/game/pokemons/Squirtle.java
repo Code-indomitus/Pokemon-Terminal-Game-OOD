@@ -8,6 +8,7 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.elements.Element;
+import game.nurse.Tradeable;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.weapons.Bubble;
@@ -20,7 +21,7 @@ import game.weapons.Bubble;
  * Modified by: Arrtish Suthan
  *
  */
-public class Squirtle extends Pokemon implements TimePerception, Hatchable {
+public class Squirtle extends Pokemon implements TimePerception, Hatchable, Tradeable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -102,5 +103,10 @@ public class Squirtle extends Pokemon implements TimePerception, Hatchable {
     public int getHatchTime() {
         int hatchTime = 2;
         return hatchTime;
+    }
+
+    @Override
+    public boolean isPokemon() {
+        return true;
     }
 }
