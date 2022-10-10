@@ -74,6 +74,14 @@ public class AffectionManager {
     }
 
     /**
+     * Add Pokemon to the collection with a pre defined affection point
+     * @param pokemon the pokemon
+     * @param affectionPoints the affection points
+     */
+    public void registerPokemon(Actor pokemon, int affectionPoints) {
+        this.affectionPoints.put(pokemon, affectionPoints);
+    }
+    /**
      * Get the affection point by using the pokemon instance as the key.
      *
      * @param pokemon Pokemon instance
