@@ -8,9 +8,11 @@ import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import game.Status;
 import game.elements.Element;
+import game.nurse.Tradeable;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.weapons.Bubble;
+import game.weapons.VineWhip;
 
 /**
  * Class representing the Squirtle pokemon daughter class
@@ -20,7 +22,7 @@ import game.weapons.Bubble;
  * Modified by: Arrtish Suthan
  *
  */
-public class Squirtle extends Pokemon implements TimePerception, Hatchable {
+public class Squirtle extends Pokemon implements TimePerception, Hatchable, Tradeable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -31,21 +33,12 @@ public class Squirtle extends Pokemon implements TimePerception, Hatchable {
      * Constructor
      */
     public Squirtle() {
-        super("Squirtle", 's');
+        super("Squirtle", 's', 100);
         this.addCapability(Element.WATER);
         this.addCapability(Status.CATCHABLE);
-        this.pokemonBackupWeapons = new BackupWeapons(new Bubble());
+        this.pokemonBackupWeapons = new BackupWeapons();
+        this.pokemonBackupWeapons.addWeapon(new Bubble());
         registerInstance();
-    }
-
-    /**
-     * By using behaviour loops, it will decide what will be the next action automatically.
-     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        this.toggleWeapon(this, map);
-        return super.playTurn(actions, lastAction, map, display);
     }
 
     /**
@@ -53,18 +46,19 @@ public class Squirtle extends Pokemon implements TimePerception, Hatchable {
      * @param pokemon pokemon actor calling for the toggleweapon method
      * @param map map of the world in which the pokemon is in
      */
+    @Override
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
-        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
+        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon().get(0));
 
         if (pokemon.hasCapability(Element.WATER) && map.locationOf(pokemon).getGround().hasCapability(Element.WATER)){
             //need to fix squirtle second condition
             if(!containsSpecial){
-                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
         else{
             if (containsSpecial) {
-                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
     }
@@ -102,5 +96,14 @@ public class Squirtle extends Pokemon implements TimePerception, Hatchable {
     public int getHatchTime() {
         int hatchTime = 2;
         return hatchTime;
+    }
+
+    /**
+     * method to check for Squirtle to be tradable as a Pokemon
+     * @return true if the object is a Pokemon
+     */
+    @Override
+    public boolean isPokemon() {
+        return true;
     }
 }
