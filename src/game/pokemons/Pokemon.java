@@ -28,25 +28,26 @@ import java.util.TreeMap;
  *
  */
 public abstract class Pokemon extends Actor {
-    private final Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
+    protected Map<Integer, Behaviour> behaviours = new TreeMap<>(); // priority, behaviour
 
     /**
      * constructor
      * @param pokemonName name of the pokemon object
      * @param pokemonDisplayChar character used to denote the presence of the pokemon on the map
+     * @param hitPoints the maximum hp of the pokemon
      */
-    public Pokemon(String pokemonName, char pokemonDisplayChar) {
-        super(pokemonName, pokemonDisplayChar, 100);
+    public Pokemon(String pokemonName, char pokemonDisplayChar, int hitPoints) {
+        super(pokemonName, pokemonDisplayChar, hitPoints);
         this.addCapability(Status.CANNOT_ENTER_FLOOR);
         AffectionManager.getInstance().registerPokemon(this);
 
-        this.behaviours.put(1, new AttackBehaviour(this));
-        this.behaviours.put(2, new FollowBehaviour(AffectionManager.getInstance().getTrainer()));
-        this.behaviours.put(3, new WanderBehaviour());
-
-
+        this.behaviours.put(2, new AttackBehaviour(this));
+        this.behaviours.put(3, new FollowBehaviour(AffectionManager.getInstance().getTrainer()));
+        this.behaviours.put(4, new WanderBehaviour());
 
     }
+
+
 
     /**
      *
@@ -57,6 +58,7 @@ public abstract class Pokemon extends Actor {
      * @return
      */
     public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
+        this.toggleWeapon(this, map);
         if (!this.isConscious()){
             AffectionManager.getInstance().cleanUp(this);
             map.removeActor(this);
@@ -90,6 +92,7 @@ public abstract class Pokemon extends Actor {
         return actions;
     }
 
+    public abstract void toggleWeapon(Pokemon pokemon, GameMap map);
     /**
      *
      * @return the respective pokemon's name, hp and AP points
@@ -97,6 +100,5 @@ public abstract class Pokemon extends Actor {
     @Override
     public String toString() {
         return name + " " + printHp() + "(AP: " + AffectionManager.getInstance().getAffectionPoint(this) + ")";
-
     }
 }
