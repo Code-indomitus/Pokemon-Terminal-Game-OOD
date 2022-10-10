@@ -2,6 +2,7 @@ package game.pokemons;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Status;
 import game.elements.Element;
 
 public class Charmeleon extends EvolvingPokemon{
@@ -11,6 +12,7 @@ public class Charmeleon extends EvolvingPokemon{
     public Charmeleon() {
         super("Charmeleon", 'C', 150);
         this.addCapability(Element.FIRE);
+        this.addCapability(Status.CATCHABLE);
     }
 
     /**

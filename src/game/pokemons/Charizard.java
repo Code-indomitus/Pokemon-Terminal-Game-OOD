@@ -2,6 +2,7 @@ package game.pokemons;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Status;
 import game.elements.Element;
 
 public class Charizard extends Pokemon{
@@ -12,6 +13,7 @@ public class Charizard extends Pokemon{
         super("Charizard", 'Z', 250);
         this.addCapability(Element.FIRE);
         this.addCapability(Element.DRAGON);
+        this.addCapability(Status.CATCHABLE);
     }
 
     /**
