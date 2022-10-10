@@ -6,6 +6,7 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import game.Status;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
 import game.elements.Element;
@@ -19,7 +20,7 @@ import game.weapons.Ember;
  * @author Riordan D. Alfredo
  * Modified by:  Shyam Kamalesh Borkar, Arrtish Suthan
  */
-public class Charmander extends Pokemon implements Tradeable, TimePerception, Hatchable {
+public class Charmander extends EvolvingPokemon implements Tradeable, TimePerception, Hatchable {
 
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -30,21 +31,13 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception, Ha
      * Constructor.
      */
     public Charmander() {
-        super("Charmander", 'c');
+        super("Charmander", 'c', 100);
         this.addCapability(Element.FIRE);
-        this.pokemonBackupWeapons = new BackupWeapons(new Ember());
+        this.addCapability(Status.CATCHABLE);
+        this.pokemonBackupWeapons = new BackupWeapons();
+        this.pokemonBackupWeapons.addWeapon(new Ember());
         registerInstance();
 
-    }
-
-    /**
-     * By using behaviour loops, it will decide what will be the next action automatically.
-     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        this.toggleWeapon(this, map);
-        return super.playTurn(actions, lastAction, map, display);
     }
 
     /**
@@ -52,17 +45,18 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception, Ha
      * @param pokemon pokemon actor calling for the toggleweapon method
      * @param map map of the world in which the pokemon is in
      */
+    @Override
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
-        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
+        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon().get(0));
 
         if (pokemon.hasCapability(Element.FIRE) && map.locationOf(pokemon).getGround().hasCapability(Element.FIRE)){
             if(!containsSpecial){
-                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
         else{
             if (containsSpecial) {
-                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
     }
@@ -108,5 +102,14 @@ public class Charmander extends Pokemon implements Tradeable, TimePerception, Ha
     public int getHatchTime() {
         int hatchTime = 4;
         return hatchTime;
+    }
+
+    /**
+     * method to return charmander's evolved version
+     * @return charmeleon pokemon
+     */
+    @Override
+    public Pokemon getEvolvedPokemon() {
+        return new Charmeleon();
     }
 }

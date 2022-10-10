@@ -11,6 +11,7 @@ import game.elements.Element;
 import game.nurse.Tradeable;
 import game.time.TimePerception;
 import game.time.TimePerceptionManager;
+import game.weapons.Ember;
 import game.weapons.VineWhip;
 
 
@@ -33,40 +34,31 @@ public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tra
      * Constructor
      */
     public Bulbasaur() {
-        super("Bulbasaur", 'b');
+        super("Bulbasaur", 'b', 100);
         this.addCapability(Element.GRASS);
         this.addCapability(Status.CATCHABLE);
-        this.pokemonBackupWeapons = new BackupWeapons(new VineWhip());
+        this.pokemonBackupWeapons = new BackupWeapons();
+        this.pokemonBackupWeapons.addWeapon(new VineWhip());
         registerInstance();
     }
-
-    /**
-     * By using behaviour loops, it will decide what will be the next action automatically.
-     * @see Actor#playTurn(ActionList, Action, GameMap, Display)
-     */
-    @Override
-    public Action playTurn(ActionList actions, Action lastAction, GameMap map, Display display) {
-        this.toggleWeapon(this, map);
-        return super.playTurn(actions, lastAction, map, display);
-    }
-
 
     /**
      * Method to toggle a weapon from the pokemon's respective backupweapon attribute to its item inventory
      * @param pokemon pokemon actor calling for the toggleweapon method
      * @param map map of the world in which the pokemon is in
      */
+    @Override
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
-        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon());
+        boolean containsSpecial = this.getInventory().contains(this.pokemonBackupWeapons.getBackupWeapon().get(0));
 
         if (pokemon.hasCapability(Element.GRASS) && map.locationOf(pokemon).getGround().hasCapability(Element.GRASS)){
             if(!containsSpecial){
-                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.addItemToInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
         else{
             if (containsSpecial) {
-                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon());
+                this.removeItemFromInventory(this.pokemonBackupWeapons.getBackupWeapon().get(0));
             }
         }
     }
@@ -105,6 +97,10 @@ public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tra
         return hatchTime;
     }
 
+    /**
+     * method to check for Bulbasaur to be tradable as a Pokemon
+     * @return true if the object is a Pokemon
+     */
     @Override
     public boolean isPokemon() {
         return true;

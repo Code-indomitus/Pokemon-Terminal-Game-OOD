@@ -4,6 +4,8 @@ import edu.monash.fit2099.engine.actors.Actor;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.actions.AttackAction;
 
+import java.util.ArrayList;
+
 /**
  * Created by:
  * @author Riordan D. Alfredo
@@ -14,13 +16,17 @@ import game.actions.AttackAction;
  * @see AttackAction uses getWeapon() in the execute() method.
  */
 public class BackupWeapons {
-    private WeaponItem backupWeapon;
+    private ArrayList<WeaponItem> backupWeapons;
 
-    public BackupWeapons(WeaponItem backupWeapon){
-        this.backupWeapon = backupWeapon;
+    public BackupWeapons(){
+        this.backupWeapons = new ArrayList<>();
     }
 
-    public WeaponItem getBackupWeapon() {
-        return backupWeapon;
+    public ArrayList<WeaponItem> getBackupWeapon() {
+        return this.backupWeapons;
+    }
+
+    public void addWeapon(WeaponItem newWeaponItem) {
+        this.backupWeapons.add(newWeaponItem);
     }
 }
