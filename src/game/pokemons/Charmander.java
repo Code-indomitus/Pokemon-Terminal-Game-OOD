@@ -110,6 +110,9 @@ public class Charmander extends EvolvingPokemon implements Tradeable, TimePercep
      */
     @Override
     public Pokemon getEvolvedPokemon() {
-        return new Charmeleon();
+        if (super.evolvedPokemon == null) {
+            super.evolvedPokemon = new Charmeleon();
+        }
+        return super.evolvedPokemon;
     }
 }

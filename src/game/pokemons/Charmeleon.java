@@ -38,6 +38,9 @@ public class Charmeleon extends EvolvingPokemon{
      */
     @Override
     public Pokemon getEvolvedPokemon() {
-        return new Charizard();
+        if (super.evolvedPokemon == null) {
+            super.evolvedPokemon = new Charizard();
+        }
+        return super.evolvedPokemon;
     }
 }
