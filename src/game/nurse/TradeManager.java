@@ -6,7 +6,9 @@ import edu.monash.fit2099.engine.items.Item;
 import game.Status;
 import game.elements.Element;
 import game.items.Pokefruit;
+import game.pokemons.Bulbasaur;
 import game.pokemons.Charmander;
+import game.pokemons.Squirtle;
 
 /**
  * Class that handles that lists that all the trades that Nurse Joy can make
@@ -22,7 +24,9 @@ public class TradeManager {
     public static ActionList getTradeActions() {
         ActionList tradeActions = new ActionList();
 
+        tradeActions.add(new TradeAction(new Bulbasaur(), 5));
         tradeActions.add(new TradeAction(new Charmander(), 5));
+        tradeActions.add(new TradeAction(new Squirtle(), 5));
         tradeActions.add(new TradeAction(new Pokefruit(Element.FIRE), 1));
         tradeActions.add(new TradeAction(new Pokefruit(Element.WATER), 1));
         tradeActions.add(new TradeAction(new Pokefruit(Element.GRASS), 1));
