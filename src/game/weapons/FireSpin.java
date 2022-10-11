@@ -14,7 +14,7 @@ public class FireSpin extends WeaponItem {
      * FireSpin Constructor.
      */
     public FireSpin() {
-        super("Fire Spin", '[', 70, "blazes", 90);
+        super("Fire Spin", '[', 70, "fire spins", 90);
         this.addCapability(Status.FIRE_SPIN);
     }
 }
