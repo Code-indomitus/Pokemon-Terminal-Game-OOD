@@ -1,6 +1,7 @@
 package game.weapons;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Status;
 
 
 /**
@@ -14,6 +15,7 @@ public class FireSpin extends WeaponItem {
      */
     public FireSpin() {
         super("Fire Spin", '[', 70, "blazes", 90);
+        this.addCapability(Status.FIRE_SPIN);
     }
 }
 

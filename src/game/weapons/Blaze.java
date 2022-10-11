@@ -1,6 +1,8 @@
 package game.weapons;
 
 import edu.monash.fit2099.engine.weapons.WeaponItem;
+import game.Status;
+import game.elements.Element;
 
 /**
  * Class representing the Blaze weapon item
@@ -13,5 +15,6 @@ public class Blaze extends WeaponItem {
      */
     public Blaze() {
         super("Blaze", ']', 60, "blazes", 90);
+        this.addCapability(Element.FIRE);
     }
 }
