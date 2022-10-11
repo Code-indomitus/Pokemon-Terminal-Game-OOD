@@ -2,10 +2,32 @@ package game.pokemons;
 
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
+import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.elements.Element;
+import game.elements.ElementsHelper;
+import game.weapons.Blaze;
+import game.weapons.Ember;
+import game.weapons.VineWhip;
+
+import java.util.Random;
 
 public class Charmeleon extends EvolvingPokemon{
+    /**
+     * pokemonBackupWeapons attribute made from BackupWeapons class
+     */
+    private BackupWeapons pokemonBackupWeapons;
+
+    /***
+     * Random class used to randomly select a special weapon
+     */
+    private final Random randomGenerator = new Random();
+
+    /**
+     * record of the current special weapon equipped by the pokemon
+     */
+    private WeaponItem currentWeapon;
+
     /**
      * Charmeleon constructor
      */
@@ -13,6 +35,9 @@ public class Charmeleon extends EvolvingPokemon{
         super("Charmeleon", 'C', 150);
         this.addCapability(Element.FIRE);
         this.addCapability(Status.CATCHABLE);
+        this.pokemonBackupWeapons = new BackupWeapons();
+        this.pokemonBackupWeapons.addWeapon(new Ember());
+        this.pokemonBackupWeapons.addWeapon(new Blaze());
     }
 
     /**
@@ -32,6 +57,15 @@ public class Charmeleon extends EvolvingPokemon{
      */
     @Override
     public void toggleWeapon(Pokemon pokemon, GameMap map) {
+        boolean containsSpecial = this.getInventory().contains(this.currentWeapon);
+        if (containsSpecial) {
+            this.removeItemFromInventory(this.currentWeapon);
+        }
+        if (ElementsHelper.hasAnySimilarElements(this, map.locationOf(this).getGround().findCapabilitiesByType(Element.class))){
+            int randomWeaponIndex = randomGenerator.nextInt(this.pokemonBackupWeapons.getBackupWeapon().size());
+            this.currentWeapon = this.pokemonBackupWeapons.getBackupWeapon().get(randomWeaponIndex);
+            this.addItemToInventory(this.currentWeapon);
+        }
     }
 
     /**
