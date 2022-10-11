@@ -12,6 +12,7 @@ public enum Status {
     CANNOT_ENTER_FLOOR, // used to make sure that actor with this status cannot enter a floor
     CANNOT_BE_EXPANDED, // to identify if the ground can be expanded.
     FEEDABLE, // used to identify if an item is feedable
-    INCUBATE // used to identify a ground is capable of incubating Pokemon eggs.
+    INCUBATE, // used to identify a ground is capable of incubating Pokemon eggs.
+    FIRE_SPIN // to identify if a weapon is capable of doing fire spin
 
 }

@@ -86,8 +86,6 @@ public class Application {
         // Place the door in Pallet Town
         palletTown.at(29, 6).addItem(doorToCenter);
 
-
-
         // Action to enter pallet town
         EnterPalletTownAction enterTown = new EnterPalletTownAction(palletTown, palletTown.at(29, 6));
         // Door that opens to Pallet Town
