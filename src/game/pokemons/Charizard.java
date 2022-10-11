@@ -1,11 +1,13 @@
 package game.pokemons;
 
+import edu.monash.fit2099.engine.positions.Exit;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.weapons.IntrinsicWeapon;
 import edu.monash.fit2099.engine.weapons.WeaponItem;
 import game.Status;
 import game.elements.Element;
 import game.elements.ElementsHelper;
+import game.items.Fire;
 import game.weapons.Blaze;
 import game.weapons.Ember;
 import game.weapons.FireSpin;
@@ -65,6 +67,12 @@ public class Charizard extends Pokemon{
         if (ElementsHelper.hasAnySimilarElements(this, map.locationOf(this).getGround().findCapabilitiesByType(Element.class))){
             int randomWeaponIndex = randomGenerator.nextInt(this.pokemonBackupWeapons.getBackupWeapon().size());
             this.currentWeapon = this.pokemonBackupWeapons.getBackupWeapon().get(randomWeaponIndex);
+            // If weapon item is fire spin add fire item to surrounding
+            if (this.currentWeapon.hasCapability(Status.FIRE_SPIN)) {
+                for (Exit exit : map.locationOf(pokemon).getExits()) {
+                    exit.getDestination().addItem(new Fire());
+                }
+            }
             this.addItemToInventory(this.currentWeapon);
         }
     }
