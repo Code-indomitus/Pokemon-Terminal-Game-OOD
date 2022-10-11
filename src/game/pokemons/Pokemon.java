@@ -47,8 +47,6 @@ public abstract class Pokemon extends Actor {
 
     }
 
-
-
     /**
      *
      * @param actions    collection of possible Actions for this Actor
@@ -92,6 +90,11 @@ public abstract class Pokemon extends Actor {
         return actions;
     }
 
+    /**
+     * abstract method for pokemons to toggle special weapons
+     * @param pokemon the pokemon
+     * @param map the map the pokemon is on
+     */
     public abstract void toggleWeapon(Pokemon pokemon, GameMap map);
     /**
      *

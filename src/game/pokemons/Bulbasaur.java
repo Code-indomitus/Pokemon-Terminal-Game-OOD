@@ -21,7 +21,6 @@ import game.weapons.VineWhip;
  * Created by:
  * @author Shyam Kamalesh Borkar
  * Modified by: Arrtish Suthan
- *
  */
 public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tradeable {
 
@@ -91,6 +90,9 @@ public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tra
         return new IntrinsicWeapon(10, "tackle");
     }
 
+    /**
+     * @return time for Charmander egg to hatch
+     */
     @Override
     public int getHatchTime() {
         int hatchTime = 3;

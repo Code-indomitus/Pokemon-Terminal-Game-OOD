@@ -74,7 +74,8 @@ public class AffectionManager {
     }
 
     /**
-     * Add Pokemon to the collection with a pre defined affection point
+     * Add Pokemon to the collection with a pre defined affection point to be able to carry forward
+     * AP from pokemon to pokemon
      * @param pokemon the pokemon
      * @param affectionPoints the affection points
      */

@@ -11,7 +11,12 @@ import game.weapons.Ember;
 import game.weapons.VineWhip;
 
 import java.util.Random;
-
+/**
+ * Class representing the Charmeleon pokemon daughter class
+ *
+ * Created by:
+ * @author Shyam Kamalesh Borkar
+ */
 public class Charmeleon extends EvolvingPokemon{
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class

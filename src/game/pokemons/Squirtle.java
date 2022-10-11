@@ -91,7 +91,9 @@ public class Squirtle extends Pokemon implements TimePerception, Hatchable, Trad
         return new IntrinsicWeapon(10, "tackle");
     }
 
-
+    /**
+     * @return time for squirtle egg to hatch
+     */
     @Override
     public int getHatchTime() {
         int hatchTime = 2;

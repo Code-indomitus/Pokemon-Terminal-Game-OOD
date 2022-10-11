@@ -98,6 +98,9 @@ public class Charmander extends EvolvingPokemon implements Tradeable, TimePercep
         return new IntrinsicWeapon(10, "scratch");
     }
 
+    /**
+     * @return time for Charmander egg to hatch
+     */
     @Override
     public int getHatchTime() {
         int hatchTime = 4;

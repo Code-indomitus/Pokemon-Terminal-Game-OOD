@@ -13,7 +13,12 @@ import game.weapons.Ember;
 import game.weapons.FireSpin;
 
 import java.util.Random;
-
+/**
+ * Class representing the Charizard pokemon daughter class
+ *
+ * Created by:
+ * @author Shyam Kamalesh Borkar
+ */
 public class Charizard extends Pokemon{
     /**
      * pokemonBackupWeapons attribute made from BackupWeapons class
@@ -31,7 +36,7 @@ public class Charizard extends Pokemon{
     private WeaponItem currentWeapon;
 
     /**
-     * constructor
+     * Charizard constructor
      */
     public Charizard() {
         super("Charizard", 'Z', 250);
