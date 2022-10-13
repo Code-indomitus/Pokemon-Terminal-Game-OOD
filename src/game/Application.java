@@ -84,14 +84,14 @@ public class Application {
         // Door that opens to Pokemon Center
         Door doorToCenter = new Door(enterCenter);
         // Place the door in Pallet Town
-        palletTown.at(29, 6).addItem(doorToCenter);
+        palletTown.at(29, 6).setGround(doorToCenter);
 
         // Action to enter pallet town
         EnterPalletTownAction enterTown = new EnterPalletTownAction(palletTown, palletTown.at(29, 6));
         // Door that opens to Pallet Town
         Door doorToPallet = new Door(enterTown);
         // Place the door in Pokemon Center
-        pokemonCenter.at(9, 5).addItem(doorToPallet);
+        pokemonCenter.at(9, 5).setGround(doorToPallet);
 
         //running the game
         world.run();
