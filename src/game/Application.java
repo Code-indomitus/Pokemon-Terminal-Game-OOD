@@ -10,6 +10,7 @@ import edu.monash.fit2099.engine.positions.Location;
 import edu.monash.fit2099.engine.positions.World;
 import game.grounds.*;
 import game.items.Candy;
+import game.nonplayer.Goh;
 import game.nurse.NurseJoy;
 import game.pokemoncenter.Door;
 import game.pokemoncenter.EnterPalletTownAction;
@@ -78,6 +79,10 @@ public class Application {
         // Add Nurse Joy in the pokemon center
         NurseJoy nurseJoy = new NurseJoy();
         pokemonCenter.at(9, 2).addActor(nurseJoy);
+
+        // add Goh to the map
+        Goh goh = new Goh();
+        palletTown.at(40, 9).addActor(goh);
 
         // Action to enter pokemon center
         EnterPokemonCenterAction enterCenter = new EnterPokemonCenterAction(pokemonCenter, pokemonCenter.at(9, 5));
