@@ -7,11 +7,22 @@ import game.Status;
 import game.pokemons.Hatchable;
 import game.pokemons.Pokemon;
 
+/**
+ * A class for a Pokemon egg item
+ * @author Eng Lim Ooi
+ *
+ */
 public class PokemonEgg extends Item {
-
+    /**
+     * Pokemon to be hatched
+     */
     Hatchable pokemonToHatch;
 
+    /**
+     * time taken for pokemon to hatch
+     */
     int hatchTime;
+
     /***
      * Pokemon Egg Constructor.
      */
@@ -21,6 +32,11 @@ public class PokemonEgg extends Item {
         this.hatchTime = 0;
     }
 
+    /**
+     * hatch the pokemon on to the ground or surroundings if it is on an
+     * incubator ground and it has exceeded its required hatch time
+     * @param currentLocation The location of the ground on which we lie.
+     */
     @Override
     public void tick(Location currentLocation) {
         if (currentLocation.getGround().hasCapability(Status.INCUBATE)) {
