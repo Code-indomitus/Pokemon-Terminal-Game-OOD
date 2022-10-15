@@ -91,7 +91,7 @@ public class Bulbasaur extends Pokemon implements TimePerception, Hatchable, Tra
     }
 
     /**
-     * @return time for Charmander egg to hatch
+     * @return time for Bulbasaur egg to hatch
      */
     @Override
     public int getHatchTime() {
