@@ -39,6 +39,7 @@ public abstract class Pokemon extends Actor {
     public Pokemon(String pokemonName, char pokemonDisplayChar, int hitPoints) {
         super(pokemonName, pokemonDisplayChar, hitPoints);
         this.addCapability(Status.CANNOT_ENTER_FLOOR);
+        this.addCapability(Status.POKEMON);
         AffectionManager.getInstance().registerPokemon(this);
 
         this.behaviours.put(2, new AttackBehaviour(this));
