@@ -20,6 +20,7 @@ public class Goh extends Trainer{
     public Goh() {
         super("Goh", 'G', 100);
         this.addCapability(Status.IMMUNE);
+        super.behaviours.put(1, new CatchBehaviour(this));
         super.behaviours.put(2, new FeedBehaviour(this));
         super.behaviours.put(3, new PickUpBehaviour(this));
         super.behaviours.put(4, new WanderBehaviour());
