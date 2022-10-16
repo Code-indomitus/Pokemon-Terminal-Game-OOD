@@ -39,8 +39,8 @@ public class EvolveAction extends Action {
         map.removeActor(evolvingPokemon);
         map.addActor(evolvingPokemon.getEvolvedPokemon(), location);
 
-        // Carry over the evolving pokemon's affection points to the evolved pokemon
-        AffectionManager.getInstance().registerPokemon(evolvingPokemon.getEvolvedPokemon(), previousAffection);
+        // Carry over half of the evolving pokemon's affection points to the evolved pokemon
+        AffectionManager.getInstance().registerPokemon(evolvingPokemon.getEvolvedPokemon(), previousAffection / 2);
 
         return evolvingPokemon + " evolves to " + evolvingPokemon.getEvolvedPokemon();
     }
