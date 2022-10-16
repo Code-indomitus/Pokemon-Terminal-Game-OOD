@@ -83,6 +83,7 @@ public class Application {
         // add Goh to the map
         Goh goh = new Goh();
         palletTown.at(40, 9).addActor(goh);
+        AffectionManager.getInstance().addTrainer(goh);
 
         // Action to enter pokemon center
         EnterPokemonCenterAction enterCenter = new EnterPokemonCenterAction(pokemonCenter, pokemonCenter.at(9, 5));

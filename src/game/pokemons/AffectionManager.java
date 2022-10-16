@@ -1,8 +1,11 @@
 package game.pokemons;
 
 import edu.monash.fit2099.engine.actors.Actor;
+import game.nonplayer.Trainer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,10 +33,16 @@ public class AffectionManager {
     private Actor trainer;
 
     /**
+     * list of trainers that are not the main player
+     */
+    List<Trainer> trainers;
+
+    /**
      * private singleton constructor
      */
     private AffectionManager() {
         this.affectionPoints = new HashMap<>();
+        this.trainers = new ArrayList<>();
     }
 
     /**
@@ -62,6 +71,22 @@ public class AffectionManager {
      */
     public Actor getTrainer() {
         return this.trainer;
+    }
+
+    /**
+     * add a new non player trainer
+     * @param trainer
+     */
+    public void addTrainer(Trainer trainer) {
+        this.trainers.add(trainer);
+    }
+
+    /**
+     * return list of non player trainers
+     * @return
+     */
+    public List<Trainer> getTrainers() {
+        return this.trainers;
     }
 
     /**
