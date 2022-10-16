@@ -69,9 +69,6 @@ public class Application {
         Player ash = new Player("Ash", '@', 100);
         world.addPlayer(ash, palletTown.at(32, 10));
 
-        for (int i = 0; i < 7; i++) {
-            ash.addItemToInventory(new Candy());
-        }
 
         // Register ash as the trainer in the game
         AffectionManager.getInstance().registerTrainer(ash);
