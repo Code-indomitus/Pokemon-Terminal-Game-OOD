@@ -7,6 +7,9 @@ import edu.monash.fit2099.engine.displays.Display;
 import edu.monash.fit2099.engine.items.Item;
 import edu.monash.fit2099.engine.positions.GameMap;
 import edu.monash.fit2099.engine.displays.Menu;
+import game.nonplayer.Trainer;
+import game.nonplayer.TrainerDetailsAction;
+import game.pokemons.AffectionManager;
 import game.time.TimePerceptionManager;
 
 /**
@@ -60,6 +63,11 @@ public class Player extends Actor {
 		// Handle multi-turn Actions
 		if (lastAction.getNextAction() != null)
 			return lastAction.getNextAction();
+
+		// add actions to view trainer details on the map
+		for (Trainer trainer: AffectionManager.getInstance().getTrainers()) {
+			actions.add(new TrainerDetailsAction(trainer));
+		}
 
 		// return/print the console menu
 		return menu.showMenu(this, actions, display);
