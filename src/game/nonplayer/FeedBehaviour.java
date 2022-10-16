@@ -10,14 +10,32 @@ import game.actions.FeedPokemonAction;
 import game.behaviours.Behaviour;
 import game.pokemons.Pokemon;
 
+/**
+ * Class for the Feed behaviour that a trainer will have
+ * Created by:
+ * @author Arrtish Suthan and Shyam Kamalesh Borkar
+ */
 public class FeedBehaviour implements Behaviour {
 
+    /**
+     * the trainer that does the behaviour
+     */
     Trainer trainer;
 
+    /**
+     * Feed behaviour constructor
+     * @param trainer the trainer that does the behaviour
+     */
     public FeedBehaviour(Trainer trainer) {
         this.trainer = trainer;
     }
 
+    /**
+     * check if there is a pokefruit to feed and a pokemon in the surroundings so that a feed action can be done accordingly
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return action
+     */
     @Override
     public Action getAction(Actor actor, GameMap map) {
         boolean hasPokeFruit = false;
