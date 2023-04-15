@@ -1,5 +1,11 @@
 # Pokemon Terminal Based Game!
 
+How to play the game:
+1. Download this repository locally.
+2. Open the local copy in an IDE.
+3. Run the Application.java class file in 'src/game/ '
+4. Explore the game and the source code.
+
 ## MA_Lab2Team2 (STRUCTURED MODE)
 Team members:
 * Arrtish Suthan
