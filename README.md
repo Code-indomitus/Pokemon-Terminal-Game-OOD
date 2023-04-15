@@ -16,8 +16,8 @@ All the Design Documents can be found in the docs folder. A folder has been crea
 
 ### Design Document Links (Individual UML files can be found in the respective docs folders)
 
-A3 Design Document: [A3 Design Document Link within repository](https://git.infotech.monash.edu/fit2099/fit2099-s2-2022/fit2099-s2-2022-assignments/MA_Lab2Group2/project/-/blob/main/docs/A3%20Design%20Documents/G2_Assignment_3_Design_Document.pdf)
+A3 Design Document: [A3 Design Document Link within repository](https://github.com/Code-indomitus/Pokemon-Terminal-Game-OOD/blob/main/docs/A1%20Design%20Documents/G2%20Assignment%201%20Design%20Document.pdf)
 
-A2 Design Document: [A2 Design Document Link within repository](https://git.infotech.monash.edu/fit2099/fit2099-s2-2022/fit2099-s2-2022-assignments/MA_Lab2Group2/project/-/blob/main/docs/A2%20Revised%20Design%20Documents/G2%20Revised%20Design%20Document.pdf)
+A2 Design Document: [A2 Design Document Link within repository](https://github.com/Code-indomitus/Pokemon-Terminal-Game-OOD/blob/main/docs/A2%20Revised%20Design%20Documents/G2%20Revised%20Design%20Document.pdf)
 
-A1 Design Document: [A1 Design Document Link within repository](https://git.infotech.monash.edu/fit2099/fit2099-s2-2022/fit2099-s2-2022-assignments/MA_Lab2Group2/project/-/blob/main/docs/A1%20Design%20Documents/G2%20Assignment%201%20Design%20Document.pdf)
+A1 Design Document: [A1 Design Document Link within repository](https://github.com/Code-indomitus/Pokemon-Terminal-Game-OOD/blob/main/docs/A3%20Design%20Documents/G2_Assignment_3_Design_Document.pdf)
